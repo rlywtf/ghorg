@@ -3,7 +3,106 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 
-## [1.9.10] - unreleased
+## [1.11.0] - 9/28/2024
+### Added
+- Reclone name and description to reclone output
+- GHORG_PRESERVE_SCM_HOSTNAME, to organize clones by a top level SCM hostname folder; thanks @rrrix
+- GHORG_PRUNE_UNTOUCHED, to prune repos that users make no changes in; thanks @MaxG87
+- GHORG_GITHUB_TOKEN_FROM_GITHUB_APP to handle github app tokens; thanks @PaarthShah
+- Command reclone-server, to run ad hoc reclone commands via HTTP requests
+- Command reclone-cron, to run periodic reclone commands on a timer
+### Changed
+- **Breaking Change:** Self hosted gitlab clones will now include the top level domain in the default output directory
+### Deprecated
+### Removed
+### Fixed
+### Security
+
+## [1.10.0] - 9/20/2024
+### Added
+- GHORG_NO_DIR_SIZE flag to turn off directory size output which is now enabled by default
+- GHORG_STATS_ENABLED flag to track clone data over time, set to false by default
+- Added two new flags to the `ghorg ls` command: `--long` and `--total`, which provide additional information about the cloned directories.
+- GHORG_GITHUB_FILTER_LANGUAGE to filter clones by repo language
+### Changed
+### Deprecated
+### Removed
+- GHORG_RECLONE_VERBOSE flag
+### Fixed
+### Security
+- Bump code.gitea.io/sdk/gitea from 0.18.0 to 0.19.0 (#441)
+- Bump github.com/xanzy/go-gitlab from 0.106.0 to 0.107.0 (#442)
+- Bump rexml from 3.2.8 to 3.3.3 in /site (#443)
+- Bump rexml from 3.3.3 to 3.3.6 in /site (#444)
+- Bump golang.org/x/oauth2 from 0.21.0 to 0.22.0 (#447)
+- Bump github.com/xanzy/go-gitlab from 0.107.0 to 0.108.0 (#446)
+
+## [1.9.13] - 7/20/2024
+### Added
+- GHORG_CLONE_SNIPPETS as a way to clone all snippets, gitlab only
+- Commit count to clone output
+### Changed
+### Deprecated
+### Removed
+### Fixed
+- Refs to deprecated io/ioutil (#415); thanks @testwill
+- Bitbucket clones without app password; thanks @SparklingAperioso
+- Github user repo clone options to be configurable; thanks @anton-kotik, @alexcurtin
+- Failing checkout when default branch changes on remote; thanks @zarthross
+### Security
+- Update go version to 1.22
+- Updated go github from v41 to v62
+- Bump rexml from 3.2.5 to 3.2.8 in /site (#414)
+- Bump golang.org/x/oauth2 from 0.19.0 to 0.20.0 (#419)
+- Bump github.com/bradleyfalzon/ghinstallation/v2 from 2.10.0 to 2.11.0 (#420)
+- Bump github.com/fatih/color from 1.16.0 to 1.17.0 (#422)
+- Bump github.com/xanzy/go-gitlab from 0.103.0 to 0.105.0 (#423)
+- Bump github.com/ktrysmt/go-bitbucket from 0.9.79 to 0.9.80 (#421)
+- Bump github.com/hashicorp/go-retryablehttp from 0.7.2 to 0.7.7 (#427)
+- Bump golang.org/x/image from 0.10.0 to 0.18.0 (#428)
+- Bump golang.org/x/oauth2 from 0.20.0 to 0.21.0 (#431)
+- Bump github.com/spf13/viper from 1.18.2 to 1.19.0 (#432)
+- Bump github.com/spf13/cobra from 1.8.0 to 1.8.1 (#433)
+
+## [1.9.12] - 5/15/24
+### Added
+- Additional info to git commands when debug is enabled; thanks @fey
+- GHORG_TARGET_REPOS_PATH now outputs target repos not found in the org
+- ssh-client to docker image; thanks @fey
+### Changed
+### Deprecated
+### Removed
+### Fixed
+- GHORG_TARGET_REPOS_PATH working with GHORG_CLONE_WIKI; thanks @han911976
+### Security
+- Bump github.com/xanzy/go-gitlab from 0.101.0 to 0.103.0 (#405)
+- Bump code.gitea.io/sdk/gitea from 0.17.1 to 0.18.0 (#403)
+- Bump golang.org/x/oauth2 from 0.18.0 to 0.19.0 (#402)
+- Bump github.com/ktrysmt/go-bitbucket from 0.9.77 to 0.9.79 (#404)
+
+## [1.9.11] - 4/27/24
+### Added
+- GHORG_TARGET_REPOS_PATH
+### Changed
+### Deprecated
+### Removed
+### Fixed
+- GitLab group calls by id instead of by name; thanks @angelabad (#400)
+### Security
+- Bump golang.org/x/net from 0.22.0 to 0.23.0 (#401)
+- Bump github.com/ktrysmt/go-bitbucket from 0.9.76 to 0.9.77 (#398)
+- Bump github.com/xanzy/go-gitlab from 0.98.0 to 0.101.0 (#396) (9 days ago)
+- Bump github.com/bradleyfalzon/ghinstallation/v2 from 2.9.0 to 2.10.0 (#397)
+- Bump golang.org/x/oauth2 from 0.17.0 to 0.18.0 (#395)
+- Bump google.golang.org/protobuf from 1.31.0 to 1.33.0 (#394)
+- Bump golang.org/x/oauth2 from 0.16.0 to 0.17.0 (#392)
+- Bump github.com/ktrysmt/go-bitbucket from 0.9.74 to 0.9.76 (#393)
+- Bump github.com/xanzy/go-gitlab from 0.96.0 to 0.98.0 (#391)
+- Bump github.com/xanzy/go-gitlab from 0.95.2 to 0.96.0 (#386)
+- Bump github.com/ktrysmt/go-bitbucket from 0.9.73 to 0.9.74 (#387)
+- Bump github.com/bradleyfalzon/ghinstallation/v2 from 2.8.0 to 2.9.0 (#388)
+
+## [1.9.10] - 1/21/24
 ### Added
 - Automated docker images (#354); thanks @afonsoc12
 - Docker support for armv7 (#361); thanks @LuckyTurtleDev
@@ -14,6 +113,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 ### Fixed
 - Release version name; thanks @gbloquel
 ### Security
+- Various dependency updates
 
 ## [1.9.9] - 8/26/23
 ### Added
@@ -203,7 +303,6 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 ### Security
 ## [1.8.2] - 7/6/22
 ### Added
-- GHORG_RECLONE_VERBOSE flag
 - GHORG_RECLONE_QUIET flag
 ### Changed
 - reclone logging format
